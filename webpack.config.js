@@ -22,10 +22,10 @@ module.exports = {
                         loader: 'file-loader',
                         options: {
                             esModule: false,
-                            name (file) {
+                            name(file) {
                                 return "[path][name].[ext]"
                             },
-                            publicPath: function(url) {
+                            publicPath: function (url) {
                                 return url.replace("../", "/assets/")
                             }
                         }
@@ -46,5 +46,12 @@ module.exports = {
             analyzerMode: "static"// the report outputs to an HTML file in the dist folder
         })
     ],
+    devServer: {
+        static: {
+            directory: path.join(__dirname, './'),
+        },
+        compress: true,
+        port: 8080,
+    },
     mode: 'development'
 };
